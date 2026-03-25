@@ -15,7 +15,7 @@ darknaku-marketplace는 Claude Code용 플러그인 마켓플레이스입니다.
 
 | 플러그인 | 버전 | 설명 |
 |---------|:----:|------|
-| **Game Development** | 0.0.2 | 체계적인 게임 개발을 위한 스킬 및 규칙 모음 |
+| **Game Development** | 0.0.3 | 체계적인 게임 개발을 위한 스킬 및 규칙 모음 |
 
 스킬, 커맨드, 개발 가이드라인에 대한 자세한 내용은 아래를 참고하세요.
 → [Game Development 플러그인 상세 문서](plugins/game-development/README.md)
