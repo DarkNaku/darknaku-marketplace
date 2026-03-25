@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-purple.svg)](https://code.claude.com)
-[![Version](https://img.shields.io/badge/Version-0.0.1-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.0.3-green.svg)]()
 [![Author](https://img.shields.io/badge/Author-DarkNaku-orange.svg)](https://github.com/darknaku)
 
 > **체계적인 게임 개발을 위한 Claude Code 플러그인 마켓플레이스**
@@ -15,10 +15,7 @@ darknaku-marketplace는 Claude Code용 플러그인 마켓플레이스입니다.
 
 | 플러그인 | 버전 | 설명 |
 |---------|:----:|------|
-| **Game Development** | 0.0.3 | 체계적인 게임 개발을 위한 스킬 및 규칙 모음 |
-
-스킬, 커맨드, 개발 가이드라인에 대한 자세한 내용은 아래를 참고하세요.
-→ [Game Development 플러그인 상세 문서](plugins/game-development/README.md)
+| **[Game Development](plugins/game-development/README.md)** | 0.0.3 | 체계적인 게임 개발을 위한 스킬 및 규칙 모음 |
 
 ---
 
