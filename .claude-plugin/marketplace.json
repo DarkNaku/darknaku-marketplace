@@ -5,7 +5,7 @@
     },
     "plugins": [
         {
-            "name": "Game Development",
+            "name": "game-development",
             "source": "./plugins/game-development",
             "description": "Plugins for systematic game development"
         }
