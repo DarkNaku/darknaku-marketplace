@@ -1,11 +1,11 @@
 ---
-name: project-analyst
-description: 현재 프로젝트를 직접 탐색하여 패키지·라이브러리, 폴더 구조, 코딩 스타일·네이밍 규칙, 핵심 패턴, 테스트 구조, 개발 환경을 추출하고 Claude Code가 참조할 수 있는 PROJECT_CONTEXT.md 문서로 저장하는 스킬. 사용자가 "프로젝트 분석해줘", "아키텍처 파악해줘", "코딩 컨벤션 뽑아줘", "프로젝트 파악", "컨텍스트 문서 만들어줘", "이 프로젝트 어떻게 구성돼 있어?" 등의 표현을 사용하거나, 새 프로젝트에 처음 진입할 때 반드시 이 스킬을 사용하라. Unity 프로젝트를 우선 지원하며 범용 프로젝트도 분석 가능하다.
+name: project-context
+description: 현재 프로젝트를 직접 탐색하여 패키지·라이브러리, 폴더 구조, 코딩 스타일·네이밍 규칙, 핵심 패턴, 테스트 구조, 개발 환경을 추출하고 Claude Code가 참조할 수 있는 project-context.md 문서로 저장하는 스킬. 사용자가 "프로젝트 분석해줘", "아키텍처 파악해줘", "코딩 컨벤션 뽑아줘", "프로젝트 파악", "컨텍스트 문서 만들어줘", "이 프로젝트 어떻게 구성돼 있어?" 등의 표현을 사용하거나, 새 프로젝트에 처음 진입할 때 반드시 이 스킬을 사용하라. Unity 프로젝트를 우선 지원하며 범용 프로젝트도 분석 가능하다.
 ---
 
-# Project Analyst
+# Project Context
 
-현재 작업 디렉토리의 프로젝트를 자동 탐색하여, Claude Code가 기능 구현 시 "이 프로젝트에서는 이렇게 한다"를 즉시 참조할 수 있는 `PROJECT_CONTEXT.md`를 생성하는 스킬.
+현재 작업 디렉토리의 프로젝트를 자동 탐색하여, Claude Code가 기능 구현 시 "이 프로젝트에서는 이렇게 한다"를 즉시 참조할 수 있는 `project-context.md`를 생성하는 스킬.
 
 ## 워크플로우
 
@@ -139,7 +139,7 @@ find . -name "*Tests.cs" | head -2 | xargs cat 2>/dev/null
 
 추출 항목: 테스트 프레임워크, Mock 라이브러리, Arrange/Act/Assert 패턴, 테스트 클래스 네이밍, 테스트 메서드 네이밍
 
-### Step 8: PROJECT_CONTEXT.md 작성
+### Step 8: project-context.md 작성
 
 `references/output-template.md`를 읽은 후 수집된 정보로 채워 작성한다.
 
@@ -151,8 +151,23 @@ find . -name "*Tests.cs" | head -2 | xargs cat 2>/dev/null
 
 ### Step 9: 저장 & 전달
 
-- 기본 저장 위치: 프로젝트 루트 `/PROJECT_CONTEXT.md`
-- 출력 위치: `/mnt/user-data/outputs/PROJECT_CONTEXT.md` (다운로드용 사본)
+저장 폴더를 아래 순서로 결정한다.
+
+```bash
+# 1. 프로젝트 내 지정된 문서 폴더 탐색
+find . -maxdepth 2 -type d \( -name "docs" -o -name "Docs" -o -name "documentation" -o -name "Documentation" \) \
+  -not -path '*/\.*' -not -path '*/Library/*' -not -path '*/node_modules/*' 2>/dev/null | head -1
+```
+
+- 문서 폴더가 있으면 해당 폴더에 저장
+- 없으면 `./docs/` 폴더를 생성하고 저장
+
+```bash
+# 저장 경로 예시
+{문서 폴더}/project-context.md
+```
+
+- 출력 위치: `/mnt/user-data/outputs/project-context.md` (다운로드용 사본)
 - `present_files`로 사용자에게 전달
 
 ## Unity 특화 분석 힌트
@@ -173,7 +188,7 @@ find Assets -name "*.asmdef" | xargs cat 2>/dev/null
 
 ## 품질 기준
 
-생성된 `PROJECT_CONTEXT.md`는 다음을 충족해야 한다:
+생성된 `project-context.md`는 다음을 충족해야 한다:
 - [ ] 실제 코드 스니펫이 각 패턴마다 1개 이상 포함됨
 - [ ] 네이밍 규칙이 예시와 함께 명시됨 (`PlayerPresenter` ✅ / `playerPresenter` ❌ 형태)
 - [ ] DI 등록 방법이 실제 프로젝트 코드 기반으로 기술됨

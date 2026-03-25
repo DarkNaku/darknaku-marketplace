@@ -1,4 +1,4 @@
-# PROJECT_CONTEXT.md
+# project-context.md
 
 > **생성 일자**: {YYYY-MM-DD}
 > **프로젝트**: {프로젝트명}
@@ -251,5 +251,5 @@ Tests/
 
 ---
 
-*본 문서는 project-analyst 스킬로 자동 생성되었습니다. 프로젝트 구조 변경 시 재실행하여 최신 상태를 유지하세요.*
+*본 문서는 project-context 스킬로 자동 생성되었습니다. 프로젝트 구조 변경 시 재실행하여 최신 상태를 유지하세요.*
 *재실행 명령: Claude Code에서 "프로젝트 다시 분석해줘" 입력*
