@@ -1,0 +1,13 @@
+{
+    "name": "DarkNaku's Marketplace",
+    "owner": {
+        "name": "DarkNaku"
+    },
+    "plugins": [
+        {
+            "name": "Game Development",
+            "source": "./plugins/game-development",
+            "description": "Plugins for systematic game development"
+        }
+    ]
+}
