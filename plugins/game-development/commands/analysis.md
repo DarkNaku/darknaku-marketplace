@@ -34,11 +34,11 @@ URL이 제공된 경우 URL에서 게임명을 추출하거나 URL을 검색 단
 
 ---
 
-### Step 2: 게임 분석 보고서 생성 (game-analysis 스킬 실행)
+### Step 2: 게임 분석 보고서 생성 (dk-analysis 스킬 실행)
 
-`game-analysis` 스킬의 워크플로우 전체를 실행한다.
+`dk-analysis` 스킬의 워크플로우 전체를 실행한다.
 
-- 스킬 파일: `.claude/skills/game-analysis/SKILL.md`
+- 스킬 파일: `.claude/skills/dk-analysis/SKILL.md`
 - **반드시 이 파일을 먼저 읽고** 해당 스킬의 워크플로우(Step 1~4)를 그대로 따른다.
 - 출력: `/mnt/user-data/outputs/{게임명}_analysis.md`
 
@@ -80,6 +80,6 @@ Step 2에서 생성된 분석 보고서를 인풋으로 `game-prd` 스킬을 실
 
 ## 주의사항
 
-- game-analysis → game-prd 순서는 반드시 지킨다. PRD는 분석 보고서 없이 생성할 수 없다.
+- dk-analysis → game-prd 순서는 반드시 지킨다. PRD는 분석 보고서 없이 생성할 수 없다.
 - 각 스킬의 품질 기준을 모두 충족한 후 다음 단계로 넘어간다.
 - 분석 보고서의 정보가 부족한 경우에도 추정값을 포함해 PRD를 완성한다.
