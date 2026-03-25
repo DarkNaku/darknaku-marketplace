@@ -54,15 +54,15 @@ Step 1에서 결정된 기능을 사용자에게 알린다:
 
 ---
 
-### Step 3: 세부 계획 수립 (feature-plan 스킬 실행)
+### Step 3: 세부 계획 수립 (dk-plan 스킬 실행)
 
-`feature-plan` 스킬의 워크플로우 전체를 실행한다.
+`dk-plan` 스킬의 워크플로우 전체를 실행한다.
 
-- 스킬 파일: `.claude/skills/feature-plan/SKILL.md` — **반드시 먼저 읽고** 해당 스킬의 워크플로우(Step 1~5)를 그대로 따른다.
+- 스킬 파일: `.claude/skills/dk-plan/SKILL.md` — **반드시 먼저 읽고** 해당 스킬의 워크플로우(Step 1~5)를 그대로 따른다.
 - 인풋: Step 2에서 확정된 기능명 및 설명
 - 출력: `features/{FeatureName}.md` 작업 명세서
 
-feature-plan 스킬은 계획 수립 후 사용자 승인을 받는다. 승인 없이 Step 4로 넘어가지 않는다.
+dk-plan 스킬은 계획 수립 후 사용자 승인을 받는다. 승인 없이 Step 4로 넘어가지 않는다.
 
 ---
 
