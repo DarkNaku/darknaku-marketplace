@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-purple.svg)](https://code.claude.com)
-[![Version](https://img.shields.io/badge/Version-0.0.3-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.0.4-green.svg)]()
 [![Author](https://img.shields.io/badge/Author-DarkNaku-orange.svg)](https://github.com/darknaku)
 
 > **체계적인 게임 개발을 위한 Claude Code 플러그인 마켓플레이스**
