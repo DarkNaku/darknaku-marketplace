@@ -1,6 +1,6 @@
 # Game Development 플러그인
 
-[![Version](https://img.shields.io/badge/Version-0.0.6-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.1.2-green.svg)]()
 
 Unity + C# 환경에서 **분석 → 기획 → 설계 → 구현**의 전체 개발 사이클을 AI와 함께 체계적으로 진행할 수 있는 스킬, 커맨드, 개발 가이드라인을 제공합니다.
 
