@@ -1,6 +1,6 @@
 # Game Development 플러그인
 
-[![Version](https://img.shields.io/badge/Version-0.1.5-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.1.6-green.svg)]()
 
 Unity + C# 환경에서 **분석 → 기획 → 설계 → 구현**의 전체 개발 사이클을 AI와 함께 체계적으로 진행할 수 있는 스킬, 커맨드, 개발 가이드라인을 제공합니다.
 
@@ -25,6 +25,7 @@ Unity + C# 환경에서 **분석 → 기획 → 설계 → 구현**의 전체 �
 | [`/dk-feature`](#dk-feature) | `features.md` 기반 개발 기능 목록 관리 |
 | [`/dk-bugfix`](#dk-bugfix) | 버그 원인 파악 · 수정 · 회귀 테스트 추가 |
 | [`/dk-test-validator`](#dk-test-validator) | 테스트 이름·내용 적합성 및 필요성 검토 |
+| [`/dk-uitoolkit`](#dk-uitoolkit) | Unity UI Toolkit(UXML + USS + C#) 기반 UI 구현 가이드 |
 
 ---
 
@@ -80,6 +81,16 @@ Unity + C# 환경에서 **분석 → 기획 → 설계 → 구현**의 전체 �
 - 로직 없는 코드 테스트, 외부 라이브러리 테스트, UI 표시 여부만 확인하는 테스트, 구현을 그대로 복제한 테스트, 내부 구현 변경에 취약한 테스트 식별
 - 일괄 또는 개별 확인 방식으로 수정·삭제 적용, 수정 후 전체 테스트 실행 확인
 - 명시적 호출 시에만 동작 (자동 발동 없음)
+
+#### `/dk-uitoolkit`
+Unity 프로젝트에서 UI를 만들거나 수정할 때 uGUI 대신 UI Toolkit(UXML + USS + C#)을 사용하도록 안내합니다.
+
+- Canvas/GameObject 기반 uGUI 사용 금지, UIDocument + UXML 구조 강제
+- 올바른 파일 구조(Layouts / Styles / Scripts/Views / Scripts/Presenters) 제시
+- UXML 작성 규칙, USS 스타일링, C# View 패턴(VisualElement 래퍼) 안내
+- MVP + VContainer + R3 연동 패턴 제공
+- 팝업·동적 UI, 에디터 UI(EditorWindow / CustomInspector) 패턴 포함
+- 자주 하는 실수 및 금지 패턴 목록 제공
 
 ---
 
@@ -178,7 +189,8 @@ game-development/
 │   ├── dk-plan/                 # 기능 작업 체크리스트 생성
 │   ├── dk-feature/              # 기능 목록 관리
 │   ├── dk-bugfix/               # 버그 원인 파악 및 수정, 회귀 테스트 추가
-│   └── dk-test-validator/       # 테스트 이름·내용 적합성 및 필요성 검토
+│   ├── dk-test-validator/       # 테스트 이름·내용 적합성 및 필요성 검토
+│   └── dk-uitoolkit/            # Unity UI Toolkit 기반 UI 구현 가이드
 ├── rules/
 │   ├── mvp-architecture.md      # MVP 아키텍처 가이드
 │   ├── code-style.md            # C#/Unity 코드 스타일
