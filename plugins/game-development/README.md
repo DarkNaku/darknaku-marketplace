@@ -1,6 +1,6 @@
 # Game Development 플러그인
 
-[![Version](https://img.shields.io/badge/Version-0.1.6-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.1.7-green.svg)]()
 
 Unity + C# 환경에서 **분석 → 기획 → 설계 → 구현**의 전체 개발 사이클을 AI와 함께 체계적으로 진행할 수 있는 스킬, 커맨드, 개발 가이드라인을 제공합니다.
 
@@ -26,6 +26,7 @@ Unity + C# 환경에서 **분석 → 기획 → 설계 → 구현**의 전체 �
 | [`/dk-bugfix`](#dk-bugfix) | 버그 원인 파악 · 수정 · 회귀 테스트 추가 |
 | [`/dk-test-validator`](#dk-test-validator) | 테스트 이름·내용 적합성 및 필요성 검토 |
 | [`/dk-uitoolkit`](#dk-uitoolkit) | Unity UI Toolkit(UXML + USS + C#) 기반 UI 구현 가이드 |
+| [`/dk-commit`](#dk-commit) | 변경 내용 분석 → 일관된 형식의 커밋 메시지 작성 및 커밋 |
 
 ---
 
@@ -92,6 +93,14 @@ Unity 프로젝트에서 UI를 만들거나 수정할 때 uGUI 대신 UI Toolkit
 - 팝업·동적 UI, 에디터 UI(EditorWindow / CustomInspector) 패턴 포함
 - 자주 하는 실수 및 금지 패턴 목록 제공
 
+#### `/dk-commit`
+저장소의 변경 내용을 분석하여 일관된 형식의 커밋 메시지를 작성하고 커밋합니다.
+
+- 타입 자동 분류: `feat` / `fix` / `balance` / `ui` / `perf` / `refactor` / `chore`
+- 스토어 업데이트 노트 추출에 최적화된 형식
+- 커밋 전 메시지 초안을 사용자에게 확인 후 실행
+- Tidy First 원칙에 따라 `refactor`와 다른 유형의 혼합 커밋 분리 권장
+
 ---
 
 ## 커맨드 (Commands)
@@ -121,13 +130,6 @@ Unity 프로젝트에서 UI를 만들거나 수정할 때 uGUI 대신 UI Toolkit
 - `dk-plan` 스킬로 작업 명세서 생성 후 사용자 승인
 - Red → Green → Refactor 사이클로 구현
 - 완료 후 `features.md` 완료 표시 자동 업데이트
-
-#### `/dk-commit`
-변경 내용을 분석하여 일관된 형식의 커밋 메시지를 작성하고 커밋합니다.
-
-- 타입 자동 분류: `feat` / `fix` / `balance` / `ui` / `perf` / `refactor` / `chore`
-- 스토어 업데이트 노트 추출에 최적화된 형식
-- 커밋 전 메시지 초안을 사용자에게 확인 후 실행
 
 ---
 
@@ -171,7 +173,7 @@ Claude Code가 코드 생성 및 설계 시 준수하는 가이드라인입니�
 [기능 개발]
 3. /dk-feature {기능 설명}   → 개발할 기능 목록에 추가
 4. /dk-implement             → 다음 기능 계획 수립 후 TDD로 구현
-5. /dk-commit                → 변경사항 커밋 메시지 표준화 후 커밋
+5. /dk-commit                → 변경사항 분석 후 표준 형식으로 커밋
 ```
 
 ---
@@ -190,15 +192,15 @@ game-development/
 │   ├── dk-feature/              # 기능 목록 관리
 │   ├── dk-bugfix/               # 버그 원인 파악 및 수정, 회귀 테스트 추가
 │   ├── dk-test-validator/       # 테스트 이름·내용 적합성 및 필요성 검토
-│   └── dk-uitoolkit/            # Unity UI Toolkit 기반 UI 구현 가이드
+│   ├── dk-uitoolkit/            # Unity UI Toolkit 기반 UI 구현 가이드
+│   └── dk-commit/               # 커밋 메시지 표준화 및 커밋
 ├── rules/
 │   ├── mvp-architecture.md      # MVP 아키텍처 가이드
 │   ├── code-style.md            # C#/Unity 코드 스타일
 │   └── tdd-workflow.md          # TDD 워크플로우
 └── commands/
     ├── dk-blueprint.md          # 분석 보고서 + GRD 자동 생성
-    ├── dk-implement.md          # 기능 구현 (계획~테스트 일괄)
-    └── dk-commit.md             # 커밋 메시지 표준화
+    └── dk-implement.md          # 기능 구현 (계획~테스트 일괄)
 ```
 
 ---
