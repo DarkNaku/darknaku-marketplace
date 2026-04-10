@@ -85,8 +85,7 @@ git checkout -b feature/{feature-name}
 - 항목이 있으면 바로 Step 4로 진행.
 
 **B. 인자 있음**
-- `game-feature` 스킬의 워크플로우를 실행한다.
-  - 스킬 파일: `.claude/skills/game-feature/SKILL.md` — **반드시 먼저 읽고** 해당 스킬 절차를 따른다.
+- `/unity-development:game-feature` 스킬의 워크플로우를 실행한다.
 - 기능 목록 업데이트 완료 후 Step 4로 진행.
 
 ---
@@ -108,7 +107,7 @@ Step 3에서 결정된 기능을 사용자에게 알린다:
 
 `unity-plan` 스킬의 워크플로우 전체를 실행한다.
 
-- 스킬 파일: `.claude/skills/unity-plan/SKILL.md` — **반드시 먼저 읽고** 해당 스킬의 워크플로우를 그대로 따른다.
+- `/unity-development:unity-plan` 스킬의 워크플로우를 그대로 따른다.
 - 인풋: Step 4에서 확정된 기능명 및 설명
 - 출력: `Docs/Features/{FeatureName}.md` 작업 명세서
 
@@ -121,8 +120,7 @@ unity-plan 스킬은 계획 수립 후 사용자 승인을 받는다. 승인 없
 Step 5에서 생성된 작업 명세서의 체크리스트를 **순서대로** 실행한다.
 
 **실행 원칙**:
-- 코드 작업은 `unity-tdd` 스킬의 워크플로우를 따른다.
-  - 스킬 파일: `.claude/skills/unity-tdd/SKILL.md` — **반드시 먼저 읽고** 해당 스킬의 TDD 사이클(Red → Green → Refactor)을 적용한다.
+- 코드 작업은 `/unity-development:unity-tdd` 스킬의 워크플로우를 따른다. TDD 사이클(Red → Green → Refactor)을 적용한다.
 - 각 태스크 완료 시 작업 명세서의 해당 체크박스를 `[x]`로 업데이트한다.
 - **각 태스크 완료 시마다** feature 브랜치에 자동 커밋한다. 사용자 확인 없이 즉시 커밋한다.
   - 커밋 메시지: `wip: {태스크 요약}`
@@ -157,7 +155,7 @@ Step 5에서 생성된 작업 명세서의 체크리스트를 **순서대로** �
 
 구현된 기능을 기능 목록 파일에 완료 표시한다.
 
-- `game-feature` 스킬의 "완료 표시" 절차를 따른다.
+- `/unity-development:game-feature` 스킬의 "완료 표시" 절차를 따른다.
 - 해당 항목: `[ ]` → `[x]`, 날짜 갱신.
 
 ---
@@ -166,7 +164,7 @@ Step 5에서 생성된 작업 명세서의 체크리스트를 **순서대로** �
 
 `project-commit` 스킬을 실행하여 최종 커밋 메시지를 작성한다.
 
-- 스킬 파일: `.claude/skills/project-commit/SKILL.md` — **반드시 먼저 읽고** 해당 스킬 절차를 따른다.
+- `/unity-development:project-commit` 스킬의 절차를 따른다.
 - 이 단계에서는 사용자 확인을 받는다.
 
 사용자가 커밋 메시지를 승인하면, feature 브랜치의 모든 커밋을 squash merge로 단일 커밋으로 합쳐 원래 브랜치에 머지한다.

@@ -44,7 +44,7 @@ URL이 제공된 경우 URL에서 게임명을 추출하거나 URL을 검색 단
 
 `game-analysis` 스킬의 워크플로우 전체를 실행한다.
 
-- 스킬 파일: `.claude/skills/game-analysis/SKILL.md` — **반드시 먼저 읽고** 해당 스킬의 워크플로우를 그대로 따른다.
+- `/unity-development:game-analysis` 스킬의 워크플로우를 그대로 따른다.
 - 출력: `Docs/{게임명}_analysis.md`
 
 완료 후 사용자에게 진행 상황을 알린다:
@@ -59,7 +59,7 @@ URL이 제공된 경우 URL에서 게임명을 추출하거나 URL을 검색 단
 
 Step 2에서 생성된 분석 보고서를 인풋으로 `game-prd` 스킬을 실행한다.
 
-- 스킬 파일: `.claude/skills/game-prd/SKILL.md` — **반드시 먼저 읽고** 해당 스킬의 워크플로우를 그대로 따른다.
+- `/unity-development:game-prd` 스킬의 워크플로우를 그대로 따른다.
 - 인풋: Step 2에서 생성한 `{게임명}_analysis.md` 파일
 - 출력: `Docs/{게임명}_PRD.md`
 
