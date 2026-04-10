@@ -1,14 +1,14 @@
 {
     "name": "darknaku-marketplace",
-    "version": "0.1.5",
+    "version": "0.2.0",
     "owner": {
         "name": "DarkNaku"
     },
     "plugins": [
         {
-            "name": "game-development",
-            "source": "./plugins/game-development",
-            "description": "Plugins for systematic game development"
+            "name": "unity-development",
+            "source": "./plugins/unity-development",
+            "description": "Plugins for systematic unity game development"
         }
     ]
 }
