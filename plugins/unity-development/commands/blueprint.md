@@ -1,3 +1,9 @@
+---
+name: blueprint
+description: 게임 이름, URL, 또는 게임을 특정할 수 있는 정보를 입력받아 게임 분석 보고서와 PRD를 순차 생성하는 커맨드. "/blueprint {게임명}", "게임 분석해서 PRD까지 만들어줘" 등의 요청 시 사용.
+argument-hint: [게임명 또는 식별 정보]
+---
+
 # /blueprint 커맨드
 
 게임 이름, URL, 또는 게임을 특정할 수 있는 정보를 입력받아
