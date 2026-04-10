@@ -145,12 +145,72 @@ Claude Code가 코드 생성 및 설계 시 준수하는 가이드라인입니�
 
 ---
 
+## 사용 가이드
+
+### A. 신규 프로젝트 — 처음부터 시작하기
+
+참조 게임을 분석하고 PRD를 자동 생성한 뒤, 기능을 하나씩 구현해 나갑니다.
+
+```
+1. Unity 프로젝트 생성 후 플러그인 설치
+
+2. 프로젝트 환경 분석
+   → "프로젝트 분석해줘"              # unity-env-analyzer → UNITY_DEV_ENV.md 생성
+
+3. 게임 기획
+   → /blueprint Candy Crush Saga     # 분석 보고서 + PRD 자동 생성
+
+4. 기능 구현 (PRD의 기능 목록을 순서대로 처리)
+   → /implement                      # 다음 기능 자동 선택 → 계획 → TDD 구현 → 커밋 → 머지
+   → /implement                      # 반복...
+
+5. 버그 발생 시
+   → "이 버그 수정해줘: {증상}"       # project-bugfix 자동 발동
+```
+
+### B. 기존 프로젝트 — 이미 진행 중인 프로젝트에 도입하기
+
+기존 코드베이스의 환경과 컨벤션을 먼저 분석한 뒤, 플러그인의 스킬을 활용합니다.
+
+```
+1. 플러그인 설치
+
+2. 프로젝트 환경 분석
+   → "프로젝트 분석해줘"              # unity-env-analyzer → UNITY_DEV_ENV.md 생성
+
+3. 코드 컨벤션 분석
+   → "코드 컨벤션 분석해줘"           # unity-conventions-analyzer → UNITY_PROJECT_CONVENTIONS.md 생성
+
+4. 기능 목록 준비 (아래 중 택 1)
+   a) PRD가 있는 경우: 기능 목록 섹션이 있는 *prd*.md 파일을 프로젝트에 배치
+   b) PRD가 없는 경우: "기능 추가해줘: {기능 설명}" → FEATURES.md 자동 생성
+
+5. 기능 구현
+   → /implement                      # 기능 목록에서 다음 항목 자동 선택 → 구현
+   → /implement {새 기능 설명}        # 기능 목록에 추가 후 바로 구현
+
+6. 개별 스킬 활용 (필요 시)
+   → "이 기능 작업 분해해줘"           # unity-plan → 작업 명세서 생성
+   → "커밋해줘"                       # project-commit → 표준 커밋
+   → "이 버그 수정해줘"               # project-bugfix → 가설 기반 수정
+```
+
+### 주요 차이점
+
+| | 신규 프로젝트 | 기존 프로젝트 |
+|---|---|---|
+| **시작점** | `/blueprint`로 기획부터 | 환경·컨벤션 분석부터 |
+| **기능 목록** | PRD 자동 생성 | 기존 PRD 활용 또는 FEATURES.md 생성 |
+| **컨벤션 분석** | 코드가 없으므로 생략 | `unity-conventions-analyzer`로 기존 스타일 파악 |
+
+---
+
 ## 권장 사용 흐름
 
 ```
 [프로젝트 초기 설정]
 1. unity-env-analyzer         → UNITY_DEV_ENV.md 생성
-2. unity-conventions-analyzer  → UNITY_PROJECT_CONVENTIONS.md 생성
+2. unity-conventions-analyzer  → UNITY_PROJECT_CONVENTIONS.md 생성 (기존 프로젝트)
 
 [게임 기획]
 3. /blueprint {게임명}         → 분석 보고서 + PRD 자동 생성
