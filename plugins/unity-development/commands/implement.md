@@ -122,9 +122,6 @@ Step 5에서 생성된 작업 명세서의 체크리스트를 **순서대로** �
 **실행 원칙**:
 - 코드 작업은 `/unity-development:unity-tdd` 스킬의 워크플로우를 따른다. TDD 사이클(Red → Green → Refactor)을 적용한다.
 - 각 태스크 완료 시 작업 명세서의 해당 체크박스를 `[x]`로 업데이트한다.
-- **각 태스크 완료 시마다** feature 브랜치에 자동 커밋한다. 사용자 확인 없이 즉시 커밋한다.
-  - 커밋 메시지: `wip: {태스크 요약}`
-  - 이 커밋들은 Step 8에서 squash merge로 하나의 커밋으로 합쳐진다.
 - 수동 작업 항목이 있으면 사용자에게 안내하고 완료 확인을 요청한 뒤 다음 단계로 진행한다.
 
 **수동 작업 처리**:
@@ -162,17 +159,16 @@ Step 5에서 생성된 작업 명세서의 체크리스트를 **순서대로** �
 
 ### Step 9: 커밋 및 머지
 
-`project-commit` 스킬을 실행하여 최종 커밋 메시지를 작성한다.
+`project-commit` 스킬을 실행하여 커밋 메시지를 작성하고 커밋한다.
 
 - `/unity-development:project-commit` 스킬의 절차를 따른다.
 - 이 단계에서는 사용자 확인을 받는다.
 
-사용자가 커밋 메시지를 승인하면, feature 브랜치의 모든 커밋을 squash merge로 단일 커밋으로 합쳐 원래 브랜치에 머지한다.
+사용자가 커밋 메시지를 승인하면, feature 브랜치에 커밋한 뒤 원래 브랜치에 머지한다.
 
 ```bash
 git checkout {원래 브랜치}
-git merge --squash feature/{feature-name}
-git commit -m "{project-commit 스킬이 작성한 커밋 메시지}"
+git merge feature/{feature-name}
 ```
 
 머지 완료 후 기능 브랜치를 삭제한다.
@@ -182,7 +178,7 @@ git branch -d feature/{feature-name}
 ```
 
 ```
-🔀 머지 완료: feature/{feature-name} → {원래 브랜치} (squash)
+🔀 머지 완료: feature/{feature-name} → {원래 브랜치}
 🗑️ 브랜치 삭제: feature/{feature-name}
 ```
 
