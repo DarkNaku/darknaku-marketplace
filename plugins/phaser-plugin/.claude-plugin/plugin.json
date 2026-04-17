@@ -1,0 +1,5 @@
+{
+    "name": "phaser-plugin",
+    "description": "Plugins for systematic Phaser game development",
+    "version": "0.2.2"
+}

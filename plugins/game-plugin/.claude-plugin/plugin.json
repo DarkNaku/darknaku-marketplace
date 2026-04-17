@@ -1,0 +1,5 @@
+{
+    "name": "game-plugin",
+    "description": "Engine-agnostic game development plugins — analysis, planning, TDD, commit, and bugfix",
+    "version": "0.2.2"
+}

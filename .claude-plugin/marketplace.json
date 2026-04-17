@@ -1,13 +1,23 @@
 {
     "name": "darknaku-marketplace",
-    "version": "0.2.0",
+    "version": "0.2.2",
     "owner": {
         "name": "DarkNaku"
     },
     "plugins": [
         {
-            "name": "unity-development",
-            "source": "./plugins/unity-development",
+            "name": "game-plugin",
+            "source": "./plugins/game-plugin",
+            "description": "Engine-agnostic game development plugins — analysis, planning, TDD, commit, and bugfix"
+        },
+        {
+            "name": "phaser-plugin",
+            "source": "./plugins/phaser-plugin",
+            "description": "Plugins for systematic Phaser game development"
+        },
+        {
+            "name": "unity-plugin",
+            "source": "./plugins/unity-plugin",
             "description": "Plugins for systematic unity game development"
         }
     ]

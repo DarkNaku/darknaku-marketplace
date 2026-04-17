@@ -1,0 +1,150 @@
+# Unity Plugin
+
+[![Version](https://img.shields.io/badge/Version-0.2.2-green.svg)]()
+
+Unity + C# 환경에 특화된 스킬과 개발 가이드라인을 제공합니다. game-plugin의 범용 스킬과 함께 사용하여 Unity 프로젝트의 환경 분석, 코드 컨벤션 파악, 테스트 실행, UI 구현을 지원합니다.
+
+---
+
+## 사용 가이드
+
+### A. 신규 프로젝트 — 처음부터 시작하기
+
+참조 게임을 분석하고 PRD를 자동 생성한 뒤, 기능을 하나씩 구현해 나갑니다.
+
+```
+1. Unity 프로젝트 생성 후 플러그인 설치
+
+2. 프로젝트 환경 분석
+   → "프로젝트 분석해줘"              # game-env-analyzer → unity-env-analyzer 자동 위임
+
+3. 게임 기획
+   → /blueprint Candy Crush Saga     # 분석 보고서 + PRD 자동 생성 (game-plugin)
+
+4. 기능 구현 (PRD의 기능 목록을 순서대로 처리)
+   → /implement                      # 다음 기능 자동 선택 → 계획 → TDD 구현 → 커밋 → 머지
+   → /implement                      # 반복...
+
+5. 버그 발생 시
+   → "이 버그 수정해줘: {증상}"       # game-bugfix 자동 발동 (game-plugin)
+```
+
+### B. 기존 프로젝트 — 이미 진행 중인 프로젝트에 도입하기
+
+기존 코드베이스의 환경과 컨벤션을 먼저 분석한 뒤, 플러그인의 스킬을 활용합니다.
+
+```
+1. 플러그인 설치
+
+2. 프로젝트 환경 분석
+   → "프로젝트 분석해줘"              # game-env-analyzer → unity-env-analyzer 자동 위임
+
+3. 코드 컨벤션 분석
+   → "코드 컨벤션 분석해줘"           # unity-conventions-analyzer → UNITY_PROJECT_CONVENTIONS.md 생성
+
+4. 기능 목록 준비 (아래 중 택 1)
+   a) PRD가 있는 경우: 기능 목록 섹션이 있는 *prd*.md 파일을 프로젝트에 배치
+   b) PRD가 없는 경우: "기능 추가해줘: {기능 설명}" → FEATURES.md 자동 생성
+
+5. 기능 구현
+   → /implement                      # 기능 목록에서 다음 항목 자동 선택 → 구현 (game-plugin)
+   → /implement {새 기능 설명}        # 기능 목록에 추가 후 바로 구현 (game-plugin)
+
+6. 개별 스킬 활용 (필요 시)
+   → "이 기능 작업 분해해줘"           # game-plan → 작업 명세서 생성 (game-plugin)
+   → "커밋해줘"                       # game-commit → 표준 커밋 (game-plugin)
+   → "이 버그 수정해줘"               # game-bugfix → 가설 기반 수정 (game-plugin)
+```
+
+### 주요 차이점
+
+| | 신규 프로젝트 | 기존 프로젝트 |
+|---|---|---|
+| **시작점** | `/blueprint`로 기획부터 | 환경·컨벤션 분석부터 |
+| **기능 목록** | PRD 자동 생성 | 기존 PRD 활용 또는 FEATURES.md 생성 |
+| **컨벤션 분석** | 코드가 없으므로 생략 | `unity-conventions-analyzer`로 기존 스타일 파악 |
+
+---
+
+## 스킬 (Skills)
+
+| 스킬 | 설명 |
+|------|------|
+| [`unity-env-analyzer`](#unity-env-analyzer) | Unity 프로젝트 분석 → `DEV_ENV.md` 자동 생성 |
+| [`unity-conventions-analyzer`](#unity-conventions-analyzer) | 코드 아키텍처·컨벤션 분석 → `UNITY_PROJECT_CONVENTIONS.md` 자동 생성 |
+| [`unity-test`](#unity-test) | Unity Test Framework 기반 테스트 작성 및 실행 |
+| [`unity-uitoolkit`](#unity-uitoolkit) | Unity UI Toolkit(UXML + USS + C#) 기반 UI 구현 가이드 |
+
+---
+
+#### `unity-env-analyzer`
+Unity 프로젝트를 분석하여 개발 환경 문서를 자동 생성합니다.
+
+- 패키지·라이브러리, 폴더 구조, Unity 버전 등 추출
+- Unity 버전에 따른 C# 버전 자동 매핑
+- `Docs/DEV_ENV.md` 자동 생성
+
+#### `unity-conventions-analyzer`
+Unity 프로젝트의 코드베이스를 분석하여 아키텍처와 코딩 컨벤션을 문서화합니다.
+
+- 코드 아키텍처, 디자인 패턴, 네이밍 규칙 역추론
+- `UNITY_PROJECT_CONVENTIONS.md` 자동 생성
+
+#### `unity-test`
+Unity 프로젝트에서 game-tdd 스킬의 TDD 사이클을 Unity Test Framework에 맞게 실행합니다.
+
+- EditMode 테스트 우선, PlayMode는 Unity 런타임 필요 시에만
+- Unity Test Runner 및 MCP 연동 지원
+- 테스트 파일 구성 및 네이밍 규칙 제공
+
+#### `unity-uitoolkit`
+Unity 프로젝트에서 UI를 만들거나 수정할 때 UI Toolkit(UXML + USS + C#)을 사용하도록 안내합니다.
+
+- Canvas/GameObject 기반 uGUI 사용 금지, UIDocument + UXML 구조 강제
+- UXML 작성 규칙, USS 스타일링, C# View 패턴 안내
+- MVP + VContainer + R3 연동 패턴 제공
+- 팝업·동적 UI, 에디터 UI 패턴 포함
+
+---
+
+## 개발 규칙 (Rules)
+
+Claude Code가 코드 생성 및 설계 시 준수하는 가이드라인입니다.
+
+### 코드 스타일 (`code-style.md`)
+- PascalCase 클래스, camelCase 변수, `_prefix` 프라이빗 필드
+- Early return으로 중첩 최소화
+- UniTask (코루틴 대체), Awake에서 컴포넌트 캐싱
+- XML 문서 주석 사용 금지
+
+---
+
+## 플러그인 구조
+
+```
+unity-plugin/
+├── .claude-plugin/
+│   └── plugin.json                  # 플러그인 매니페스트
+├── skills/
+│   ├── unity-env-analyzer/          # Unity 개발 환경 분석
+│   ├── unity-conventions-analyzer/  # 코드 컨벤션 분석
+│   ├── unity-test/                  # Unity Test Framework 테스트
+│   └── unity-uitoolkit/             # Unity UI Toolkit 기반 UI 구현 가이드
+└── rules/
+    └── code-style.md                # C#/Unity 코드 스타일
+```
+
+---
+
+## 기술 스택
+
+플러그인이 대상으로 하는 Unity 게임 개발 환경:
+
+| 분류 | 라이브러리 |
+|------|-----------|
+| **DI** | VContainer (또는 Zenject, Pure DI) |
+| **이벤트** | MessagePipe, UniRx, R3 |
+| **비동기** | UniTask |
+| **트위닝** | DOTween, LeanTween |
+| **테스트** | NUnit, NSubstitute, Moq |
+| **UI** | UI Toolkit, MonoBehaviour 기반 MVP |
