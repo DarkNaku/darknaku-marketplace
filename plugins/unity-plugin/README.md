@@ -1,6 +1,6 @@
 # Unity Plugin
 
-[![Version](https://img.shields.io/badge/Version-0.2.2-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.2.3-green.svg)]()
 
 Unity + C# 환경에 특화된 스킬과 개발 가이드라인을 제공합니다. game-plugin의 범용 스킬과 함께 사용하여 Unity 프로젝트의 환경 분석, 코드 컨벤션 파악, 테스트 실행, UI 구현을 지원합니다.
 
@@ -74,6 +74,13 @@ Unity + C# 환경에 특화된 스킬과 개발 가이드라인을 제공합니�
 | [`unity-conventions-analyzer`](#unity-conventions-analyzer) | 코드 아키텍처·컨벤션 분석 → `UNITY_PROJECT_CONVENTIONS.md` 자동 생성 |
 | [`unity-test`](#unity-test) | Unity Test Framework 기반 테스트 작성 및 실행 |
 | [`unity-uitoolkit`](#unity-uitoolkit) | Unity UI Toolkit(UXML + USS + C#) 기반 UI 구현 가이드 |
+| [`unity-vcontainer`](#unity-vcontainer) | VContainer DI 컨테이너 등록 패턴, LifetimeScope 설계, EntryPoint 활용 가이드 |
+| [`unity-r3`](#unity-r3) | R3 Reactive Extensions 구독 패턴, ReactiveProperty, 오퍼레이터 활용 가이드 |
+| [`unity-messagepipe`](#unity-messagepipe) | MessagePipe Pub/Sub, Request/Response 패턴, 시스템 간 통신 가이드 |
+| [`unity-unitask`](#unity-unitask) | UniTask 비동기 패턴, 취소 처리, PlayerLoop 타이밍 가이드 |
+| [`unity-zlinq`](#unity-zlinq) | ZLinq 제로 할당 LINQ, GameObject 트리 탐색, GC 최적화 가이드 |
+| [`unity-dotween`](#unity-dotween) | DOTween 트위닝, Sequence 조합, 피드백 효과 가이드 |
+| [`unity-addressables`](#unity-addressables) | Addressables 에셋 로딩/해제, AssetReference, 메모리 관리 가이드 |
 
 ---
 
@@ -105,6 +112,72 @@ Unity 프로젝트에서 UI를 만들거나 수정할 때 UI Toolkit(UXML + USS 
 - MVP + VContainer + R3 연동 패턴 제공
 - 팝업·동적 UI, 에디터 UI 패턴 포함
 
+#### `unity-vcontainer`
+VContainer를 사용하는 Unity 프로젝트에서 DI 컨테이너 활용 방법을 안내합니다.
+
+- 생성자 주입 기본, LifetimeScope 계층 설계
+- Register/RegisterComponent/RegisterEntryPoint 등록 패턴
+- EntryPoint 라이프사이클 인터페이스 (IStartable, ITickable 등)
+- 씬 간 스코프 관리, Additive Scene 로딩 패턴
+- MVP + VContainer 연동, R3 연동 패턴
+
+#### `unity-r3`
+R3(Reactive Extensions)를 사용하는 Unity 프로젝트에서 리액티브 프로그래밍 패턴을 안내합니다.
+
+- Observable, Subject, ReactiveProperty 사용 패턴
+- 구독 관리 (AddTo, DisposableBag) 및 누수 방지
+- 프레임 기반 오퍼레이터 (EveryUpdate, EveryValueChanged)
+- 비동기 연동 (SelectAwait, AwaitOperation)
+- VContainer + R3 + MVP 통합 패턴
+
+#### `unity-messagepipe`
+MessagePipe를 사용하는 Unity 프로젝트에서 디커플링된 메시지 통신 패턴을 안내합니다.
+
+- IPublisher/ISubscriber 기반 Pub/Sub 패턴
+- IRequestHandler 기반 Request/Response (Mediator) 패턴
+- 키 기반 메시지 브로커, 비동기 Pub/Sub
+- MessageHandlerFilter 미들웨어 체인
+- VContainer + MessagePipe + R3 통합 아키텍처
+
+#### `unity-unitask`
+UniTask를 사용하는 Unity 프로젝트에서 async/await 비동기 패턴을 안내합니다.
+
+- 코루틴 대체: async UniTask 기본 패턴
+- CancellationToken 전파, 타임아웃, 취소 처리
+- PlayerLoopTiming, Yield vs NextFrame 구분
+- UniTask.WhenAll/WhenAny 작업 결합
+- AsyncOperation, Addressables, DOTween 비동기 대기
+- IUniTaskAsyncEnumerable, Channel 비동기 스트림
+
+#### `unity-zlinq`
+ZLinq를 사용하는 Unity 프로젝트에서 제로 할당 LINQ 패턴을 안내합니다.
+
+- AsValueEnumerable() 제로 할당 LINQ 체인
+- LINQ to Tree: Ancestors, Children, Descendants, OfComponent
+- GetComponentsInChildren 대체 패턴
+- UI Toolkit VisualElement 트리 탐색
+- NativeArray/NativeList LINQ 지원
+- Drop-In 소스 생성기로 기존 LINQ 자동 교체
+
+#### `unity-dotween`
+DOTween을 사용하는 Unity 프로젝트에서 트위닝 애니메이션 패턴을 안내합니다.
+
+- Tweener 생성 (DOMove, DORotate, DOScale, DOFade 등)
+- Sequence 조합 (Append, Join, Insert 타임라인)
+- 설정 체인 (SetEase, SetLoops, SetLink 수명 관리)
+- 피드백 효과 (Punch, Shake)
+- UI 애니메이션, 게임 피드백 실전 패턴
+- UniTask 연동 (WithCancellation)
+
+#### `unity-addressables`
+Addressables를 사용하는 Unity 프로젝트에서 에셋 관리 패턴을 안내합니다.
+
+- AssetReference Inspector 할당, 타입 제한 레퍼런스
+- LoadAssetAsync, InstantiateAsync, LoadSceneAsync 로딩 패턴
+- Release/ReleaseInstance 메모리 해제 규칙
+- 레퍼런스 카운팅, AssetBundle 메모리 관리
+- 프리로딩, 오브젝트 풀, 씬 전환 실전 패턴
+
 ---
 
 ## 개발 규칙 (Rules)
@@ -129,7 +202,14 @@ unity-plugin/
 │   ├── unity-env-analyzer/          # Unity 개발 환경 분석
 │   ├── unity-conventions-analyzer/  # 코드 컨벤션 분석
 │   ├── unity-test/                  # Unity Test Framework 테스트
-│   └── unity-uitoolkit/             # Unity UI Toolkit 기반 UI 구현 가이드
+│   ├── unity-uitoolkit/             # Unity UI Toolkit 기반 UI 구현 가이드
+│   ├── unity-vcontainer/            # VContainer DI 컨테이너 활용 가이드
+│   ├── unity-r3/                    # R3 Reactive Extensions 활용 가이드
+│   ├── unity-messagepipe/           # MessagePipe 메시지 브로커 활용 가이드
+│   ├── unity-unitask/               # UniTask 비동기 처리 가이드
+│   ├── unity-zlinq/                 # ZLinq 제로 할당 LINQ 가이드
+│   ├── unity-dotween/               # DOTween 트위닝 애니메이션 가이드
+│   └── unity-addressables/          # Addressables 에셋 관리 가이드
 └── rules/
     └── code-style.md                # C#/Unity 코드 스타일
 ```
