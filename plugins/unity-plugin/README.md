@@ -1,6 +1,6 @@
 # Unity Plugin
 
-[![Version](https://img.shields.io/badge/Version-0.2.4-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.2.5-green.svg)]()
 
 Unity + C# 환경에 특화된 스킬과 개발 가이드라인을 제공합니다. game-plugin의 범용 스킬과 함께 사용하여 Unity 프로젝트의 환경 분석, 코드 컨벤션 파악, 테스트 실행, UI 구현을 지원합니다.
 
@@ -82,6 +82,7 @@ Unity + C# 환경에 특화된 스킬과 개발 가이드라인을 제공합니�
 | [`unity-dotween`](#unity-dotween) | DOTween 트위닝, Sequence 조합, 피드백 효과 가이드 |
 | [`unity-inputsystem`](#unity-inputsystem) | Input System Action 설계, 바인딩, 콜백 처리, 리바인딩 가이드 |
 | [`unity-addressables`](#unity-addressables) | Addressables 에셋 로딩/해제, AssetReference, 메모리 관리 가이드 |
+| [`unity-cinemachine`](#unity-cinemachine) | Cinemachine 카메라 시스템, Virtual Camera, 블렌딩, Impulse 가이드 |
 
 ---
 
@@ -193,6 +194,17 @@ Addressables를 사용하는 Unity 프로젝트에서 에셋 관리 패턴을 �
 - 레퍼런스 카운팅, AssetBundle 메모리 관리
 - 프리로딩, 오브젝트 풀, 씬 전환 실전 패턴
 
+#### `unity-cinemachine`
+Cinemachine을 사용하는 Unity 프로젝트에서 카메라 시스템 구성 패턴을 안내합니다.
+
+- Virtual Camera 구성, Priority 기반 카메라 전환
+- Body 알고리즘 (Transposer, Framing Transposer, Orbital, Tracked Dolly)
+- Aim 알고리즘 (Composer, Group Composer, POV)
+- FreeLook, ClearShot, State-Driven, Mixing, Blend List 특수 카메라
+- Noise (카메라 흔들림), Impulse 시스템 (충격 피드백)
+- Extensions (Confiner, Collider, PostProcessing)
+- 블렌딩 설정, Timeline 연동, 장르별 추천 구성
+
 ---
 
 ## 개발 규칙 (Rules)
@@ -225,7 +237,8 @@ unity-plugin/
 │   ├── unity-zlinq/                 # ZLinq 제로 할당 LINQ 가이드
 │   ├── unity-dotween/               # DOTween 트위닝 애니메이션 가이드
 │   ├── unity-inputsystem/           # Input System 입력 처리 가이드
-│   └── unity-addressables/          # Addressables 에셋 관리 가이드
+│   ├── unity-addressables/          # Addressables 에셋 관리 가이드
+│   └── unity-cinemachine/           # Cinemachine 카메라 시스템 가이드
 └── rules/
     └── code-style.md                # C#/Unity 코드 스타일
 ```
@@ -244,4 +257,5 @@ unity-plugin/
 | **트위닝** | DOTween, LeanTween |
 | **테스트** | NUnit, NSubstitute, Moq |
 | **입력** | Input System |
+| **카메라** | Cinemachine |
 | **UI** | UI Toolkit, MonoBehaviour 기반 MVP |
