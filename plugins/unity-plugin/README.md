@@ -1,6 +1,6 @@
 # Unity Plugin
 
-[![Version](https://img.shields.io/badge/Version-0.2.3-green.svg)]()
+[![Version](https://img.shields.io/badge/Version-0.2.4-green.svg)]()
 
 Unity + C# 환경에 특화된 스킬과 개발 가이드라인을 제공합니다. game-plugin의 범용 스킬과 함께 사용하여 Unity 프로젝트의 환경 분석, 코드 컨벤션 파악, 테스트 실행, UI 구현을 지원합니다.
 
@@ -80,6 +80,7 @@ Unity + C# 환경에 특화된 스킬과 개발 가이드라인을 제공합니�
 | [`unity-unitask`](#unity-unitask) | UniTask 비동기 패턴, 취소 처리, PlayerLoop 타이밍 가이드 |
 | [`unity-zlinq`](#unity-zlinq) | ZLinq 제로 할당 LINQ, GameObject 트리 탐색, GC 최적화 가이드 |
 | [`unity-dotween`](#unity-dotween) | DOTween 트위닝, Sequence 조합, 피드백 효과 가이드 |
+| [`unity-inputsystem`](#unity-inputsystem) | Input System Action 설계, 바인딩, 콜백 처리, 리바인딩 가이드 |
 | [`unity-addressables`](#unity-addressables) | Addressables 에셋 로딩/해제, AssetReference, 메모리 관리 가이드 |
 
 ---
@@ -169,6 +170,20 @@ DOTween을 사용하는 Unity 프로젝트에서 트위닝 애니메이션 패�
 - UI 애니메이션, 게임 피드백 실전 패턴
 - UniTask 연동 (WithCancellation)
 
+#### `unity-inputsystem`
+Input System을 사용하는 Unity 프로젝트에서 입력 처리 패턴을 안내합니다.
+
+- Action 기반 입력 추상화 (Value, Button, Pass-Through)
+- Action Map 설계 및 상태별 전환 패턴
+- 프로젝트 전역 Action, InputActionAsset + C# 클래스 생성 워크플로우
+- 폴링 / 콜백 입력 응답, Action Phase 활용
+- Composite Binding (2DVector, Axis, Modifier)
+- Interaction (Hold, Tap, MultiTap 등)
+- PlayerInput 컴포넌트 Behavior 옵션 비교
+- EnhancedTouch API, TouchSimulation
+- 런타임 리바인딩, 바인딩 저장/복원, 표시 문자열
+- VContainer 연동 입력 서비스 추상화 패턴
+
 #### `unity-addressables`
 Addressables를 사용하는 Unity 프로젝트에서 에셋 관리 패턴을 안내합니다.
 
@@ -209,6 +224,7 @@ unity-plugin/
 │   ├── unity-unitask/               # UniTask 비동기 처리 가이드
 │   ├── unity-zlinq/                 # ZLinq 제로 할당 LINQ 가이드
 │   ├── unity-dotween/               # DOTween 트위닝 애니메이션 가이드
+│   ├── unity-inputsystem/           # Input System 입력 처리 가이드
 │   └── unity-addressables/          # Addressables 에셋 관리 가이드
 └── rules/
     └── code-style.md                # C#/Unity 코드 스타일
@@ -227,4 +243,5 @@ unity-plugin/
 | **비동기** | UniTask |
 | **트위닝** | DOTween, LeanTween |
 | **테스트** | NUnit, NSubstitute, Moq |
+| **입력** | Input System |
 | **UI** | UI Toolkit, MonoBehaviour 기반 MVP |
